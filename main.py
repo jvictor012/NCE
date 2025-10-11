@@ -1,19 +1,31 @@
-from flask import Flask
+from flask import Flask, render_template, request
 
-app = Flask("__name__")
+app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST'])
 def home():
-    pass 
+    return render_template('index.html')
+
+
 
 @app.route('/cadastrar', methods = ['GET', 'POST'])
 def cadastrar():
-    pass
+    if request.method == 'POST':
+        return render_template('cadastrar.html')
+    return render_template('cadastrar.html')
 
-@app.route('/login', methods = ['GET', 'POST'])
+
+
+
+@app.route('/', methods = ['GET', 'POST'])
 def login():
-    pass
+    if request.method == 'POST':
+        matricula = request.form['lmatricula']
+        senha = request.form['lsenha']
+        return render_template('login.html', mat = matricula, sen = senha)
+    return render_template('login.html')
 
 
-if '__name__' == '__main__':
+
+if __name__ == '__main__':
     app.run(debug=True)

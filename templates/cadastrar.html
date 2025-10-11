@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+  </head>
+  <body>
+    <form action="{{url_for('cadastrar')}}" method="post">
+      <label for="cemail">Email: </label>
+      <input id="cemail" type="email" name="cemail" />
+
+      <label for="cmatricula">Matricula:</label>
+      <input id="cmatricula" type="number" name="cmatricula" />
+
+      <label for="csenha">Senha:</label>
+      <input id="csenha" type="password" name="csenha" />
+      <button type="submit">Enviar</button>
+    </form>
+    <a href="{{url_for('')}}">Já tenho uma conta!</a>
+  </body>
+</html>
