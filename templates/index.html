@@ -5,5 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NCE</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <a href="{{url_for('login')}}">Sair</a>
+      <a href="{{url_for('perfil')}}">Perfil</a>
+    </header>
+
+    <form
+      action="{{url_for('home')}}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <h1>Inserir Nova Notícia</h1>
+      <label for="titulo"> Titulo da Notícia: </label>
+      <input type="text" maxlength="70" id="titulo" name="titulo" required />
+
+      <h2>Insira no mínimo uma imagem e no máximo 3 imagens!</h2>
+
+      <label for="imagem1">Imagem: </label>
+      <input type="file" name="imagem1" id="imagem1" required />
+
+      <label for="imagem2">Imagem: </label>
+      <input type="file" name="imagem2" id="imagem2" />
+
+      <label for="imagem3">Imagem: </label>
+      <input type="file" name="imagem3" id="imagem3" />
+
+      <h2>Categorias:</h2>
+      <input type="radio" id="radio1" name="radio1" />
+      <label id="radio1">Oportunidades de Estágio</label>
+
+      <input type="radio" id="radio2" name="radio2" />
+      <label id="radio2">Projeto Integrador</label>
+
+      <input type="radio" id="radio3" name="radio3" />
+      <label id="radio3">Projeto de Pesquisa</label>
+
+      <input type="radio" id="radio4" name="radio4" />
+      <label id="radio4">Projeto de Extensão</label>
+
+      <input type="radio" id="radio5" name="radio5" />
+      <label id="radio5">Premiações</label>
+
+      <input type="radio" id="radio6" name="radio6" />
+      <label id="radio6">Processos Seletivos</label>
+
+      <input type="radio" id="radio7" name="radio7" />
+      <label id="radio7">Eventos Esportivos</label>
+
+      <input type="radio" id="radio8" name="radio8" />
+      <label id="radio8">Eventos Educacionais</label>
+
+      <h2>Informações sobre a nova notícia</h2>
+      <label>Conteúdo da Notícia</label>
+      <input
+        type="text"
+        name="conteudo"
+        id="conteudo"
+        minlength="200"
+        maxlength="5000"
+        required
+      />
+
+      <p>Insira os links abaixo (Não obrigatório)</p>
+      <label for="link1">Link: </label>
+      <input type="url" id="link1" name="link1" />
+
+      <label for="link2">Link: </label>
+      <input type="url" id="link2" name="link2" />
+
+      <label for="link3">Link: </label>
+      <input type="url" id="link3" name="link3" />
+
+      <label for="link4">Link: </label>
+      <input type="url" id="link4" name="link4" />
+
+      <label for="link5">Link: </label>
+      <input type="url" id="link5" name="link5" />
+
+      <button type="submit">Enviar Notícia</button>
+    </form>
+  </body>
 </html>

@@ -8,15 +8,15 @@
   <body>
     <form action="{{url_for('cadastrar')}}" method="post">
       <label for="cemail">Email: </label>
-      <input id="cemail" type="email" name="cemail" />
+      <input id="cemail" type="email" name="cemail" required />
 
       <label for="cmatricula">Matricula:</label>
-      <input id="cmatricula" type="number" name="cmatricula" />
+      <input id="cmatricula" type="number" name="cmatricula" required />
 
       <label for="csenha">Senha:</label>
-      <input id="csenha" type="password" name="csenha" />
+      <input id="csenha" type="password" name="csenha" required />
       <button type="submit">Enviar</button>
     </form>
-    <a href="{{url_for('')}}">Já tenho uma conta!</a>
+    <a href="{{url_for('login')}}">Já tenho uma conta!</a>
   </body>
 </html>
