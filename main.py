@@ -5,8 +5,36 @@ app = Flask(__name__)
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
+        # Campos de texto
+        titulo = request.form['titulo']
+        categoria = request.form['categoria']
+        conteudo = request.form['conteudo']
+        link1 = request.form.get('link1')  # get() evita erro se vazio
+        link2 = request.form.get('link2')
+        link3 = request.form.get('link3')
+        link4 = request.form.get('link4')
+        link5 = request.form.get('link5')
 
-        return render_template('index.htlm')
+        # Imagens
+        imagem1 = request.files.get('imagem1')
+        imagem2 = request.files.get('imagem2')
+        imagem3 = request.files.get('imagem3')
+
+        # Aqui você pode salvar as imagens e os dados no banco ou pasta
+
+        return render_template('index.html', 
+                               titulo=titulo, 
+                               categoria=categoria,
+                               conteudo=conteudo,
+                               link1=link1,
+                               link2=link2,
+                               link3=link3,
+                               link4=link4,
+                               link5=link5,
+                               imagem1=imagem1.filename if imagem1 else None,
+                               imagem2=imagem2.filename if imagem2 else None,
+                               imagem3=imagem3.filename if imagem3 else None)
+
     return render_template('index.html')
 
 

@@ -3,87 +3,139 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NCE</title>
+    <title>NCE - Nova Notícia</title>
   </head>
   <body>
     <header>
-      <a href="{{url_for('login')}}">Sair</a>
-      <a href="{{url_for('perfil')}}">Perfil</a>
+      <a href="{{ url_for('login') }}">Sair</a>
+      <a href="{{ url_for('perfil') }}">Perfil</a>
     </header>
 
     <form
-      action="{{url_for('home')}}"
+      action="{{ url_for('home') }}"
       method="post"
       enctype="multipart/form-data"
     >
       <h1>Inserir Nova Notícia</h1>
-      <label for="titulo"> Titulo da Notícia: </label>
-      <input type="text" maxlength="70" id="titulo" name="titulo" required />
 
-      <h2>Insira no mínimo uma imagem e no máximo 3 imagens!</h2>
+      <!-- Título -->
+      <label for="titulo">Título da Notícia:</label>
+      <input type="text" id="titulo" name="titulo" maxlength="70" required />
 
-      <label for="imagem1">Imagem: </label>
-      <input type="file" name="imagem1" id="imagem1" required />
+      <!-- Imagens -->
+      <h2>Insira no mínimo uma imagem e no máximo 3 imagens</h2>
+      <label for="imagem1">Imagem 1:</label>
+      <input type="file" id="imagem1" name="imagem1" required />
 
-      <label for="imagem2">Imagem: </label>
-      <input type="file" name="imagem2" id="imagem2" />
+      <label for="imagem2">Imagem 2:</label>
+      <input type="file" id="imagem2" name="imagem2" />
 
-      <label for="imagem3">Imagem: </label>
-      <input type="file" name="imagem3" id="imagem3" />
+      <label for="imagem3">Imagem 3:</label>
+      <input type="file" id="imagem3" name="imagem3" />
 
+      <!-- Categorias -->
       <h2>Categorias:</h2>
-      <input type="radio" id="radio1" name="radio1" />
-      <label id="radio1">Oportunidades de Estágio</label>
-
-      <input type="radio" id="radio2" name="radio2" />
-      <label id="radio2">Projeto Integrador</label>
-
-      <input type="radio" id="radio3" name="radio3" />
-      <label id="radio3">Projeto de Pesquisa</label>
-
-      <input type="radio" id="radio4" name="radio4" />
-      <label id="radio4">Projeto de Extensão</label>
-
-      <input type="radio" id="radio5" name="radio5" />
-      <label id="radio5">Premiações</label>
-
-      <input type="radio" id="radio6" name="radio6" />
-      <label id="radio6">Processos Seletivos</label>
-
-      <input type="radio" id="radio7" name="radio7" />
-      <label id="radio7">Eventos Esportivos</label>
-
-      <input type="radio" id="radio8" name="radio8" />
-      <label id="radio8">Eventos Educacionais</label>
-
-      <h2>Informações sobre a nova notícia</h2>
-      <label>Conteúdo da Notícia</label>
       <input
-        type="text"
-        name="conteudo"
+        type="radio"
+        id="radio1"
+        name="categoria"
+        value="Oportunidades de Estágio"
+      />
+      <label for="radio1">Oportunidades de Estágio</label>
+
+      <input
+        type="radio"
+        id="radio2"
+        name="categoria"
+        value="Projeto Integrador"
+      />
+      <label for="radio2">Projeto Integrador</label>
+
+      <input
+        type="radio"
+        id="radio3"
+        name="categoria"
+        value="Projeto de Pesquisa"
+      />
+      <label for="radio3">Projeto de Pesquisa</label>
+
+      <input
+        type="radio"
+        id="radio4"
+        name="categoria"
+        value="Projeto de Extensão"
+      />
+      <label for="radio4">Projeto de Extensão</label>
+
+      <input type="radio" id="radio5" name="categoria" value="Premiações" />
+      <label for="radio5">Premiações</label>
+
+      <input
+        type="radio"
+        id="radio6"
+        name="categoria"
+        value="Processos Seletivos"
+      />
+      <label for="radio6">Processos Seletivos</label>
+
+      <input
+        type="radio"
+        id="radio7"
+        name="categoria"
+        value="Eventos Esportivos"
+      />
+      <label for="radio7">Eventos Esportivos</label>
+
+      <input
+        type="radio"
+        id="radio8"
+        name="categoria"
+        value="Eventos Educacionais"
+      />
+      <label for="radio8">Eventos Educacionais</label>
+
+      <!-- Conteúdo -->
+      <h2>Informações sobre a nova notícia</h2>
+      <label for="conteudo">Conteúdo da Notícia:</label>
+      <textarea
         id="conteudo"
-        minlength="200"
+        name="conteudo"
+        minlength="100"
         maxlength="5000"
         required
-      />
+      ></textarea>
 
+      <!-- Links opcionais -->
       <p>Insira os links abaixo (Não obrigatório)</p>
-      <label for="link1">Link: </label>
+      <label for="link1">Link 1:</label>
       <input type="url" id="link1" name="link1" />
 
-      <label for="link2">Link: </label>
+      <label for="link2">Link 2:</label>
       <input type="url" id="link2" name="link2" />
 
-      <label for="link3">Link: </label>
+      <label for="link3">Link 3:</label>
       <input type="url" id="link3" name="link3" />
 
-      <label for="link4">Link: </label>
+      <label for="link4">Link 4:</label>
       <input type="url" id="link4" name="link4" />
 
-      <label for="link5">Link: </label>
+      <label for="link5">Link 5:</label>
       <input type="url" id="link5" name="link5" />
 
+      <!-- Botão -->
       <button type="submit">Enviar Notícia</button>
     </form>
+
+    <p>Titulo: {{titulo}}</p>
+    <p>categoria: {{categoria}}</p>
+    <p>conteudo: {{conteudo}}</p>
+    <p>link1: {{link1}}</p>
+    <p>link2: {{link2}}</p>
+    <p>link3: {{link3}}</p>
+    <p>link4: {{link4}}</p>
+    <p>link5: {{link5}}</p>
+    <p>imagem1: {{imagem1}}</p>
+    <p>imagem2: {{imagem2}}</p>
+    <p>imagem3: {{imagem3}}</p>
   </body>
 </html>
