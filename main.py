@@ -1,6 +1,16 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
+import bcrypt
+from bd import executar_comandos
+from io import BytesIO
 
 app = Flask(__name__)
+app.secret_key = 'chave_muito_secreta'
+
+
+
+@app.route('/noticias')
+def noticias():
+    return render_template('home_user.html')
 
 @app.route('/home', methods=['GET', 'POST'])
 def home():
@@ -16,26 +26,22 @@ def home():
         link5 = request.form.get('link5')
 
         # Imagens
-        imagem1 = request.files.get('imagem1')
+        imagem1 = request.files['imagem1']  # pega o arquivo do form
         imagem2 = request.files.get('imagem2')
         imagem3 = request.files.get('imagem3')
+        binario = imagem1.read()
+        # Salva na memória para a outra rota
+        with open('temp_image', 'wb') as f:
+            f.write(binario)
+        return render_template('index.html', imagem=True)
+    return render_template('index.html', imagem=False)
 
-        # Aqui você pode salvar as imagens e os dados no banco ou pasta
-
-        return render_template('index.html', 
-                               titulo=titulo, 
-                               categoria=categoria,
-                               conteudo=conteudo,
-                               link1=link1,
-                               link2=link2,
-                               link3=link3,
-                               link4=link4,
-                               link5=link5,
-                               imagem1=imagem1.filename if imagem1 else None,
-                               imagem2=imagem2.filename if imagem2 else None,
-                               imagem3=imagem3.filename if imagem3 else None)
-
-    return render_template('index.html')
+# Rota para enviar a imagem
+@app.route('/imagem')
+def imagem():
+    with open('temp_image', 'rb') as f:
+        original = BytesIO(f.read())
+    return send_file(original, download_name='imagem.jpg', mimetype='image/jpeg')
 
 
 @app.route('/perfil', methods=['GET', 'POST'])
@@ -50,7 +56,15 @@ def perfil():
 @app.route('/cadastrar', methods = ['GET', 'POST'])
 def cadastrar():
     if request.method == 'POST':
-        return render_template('cadastrar.html')
+        email = request.form.get('cemail')
+        matricula = request.form.get('cmatricula')
+        senha = request.form.get('csenha')
+        senha_hash = bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        query = '''INSERT INTO usuario(email, matricula, senha_hash) VALUES(%s,%s,%s)'''
+        valores = (email, matricula, senha_hash)
+        executar_comandos(query, valores, retornar_id=False)
+        mensagem = "Cadastro efetuado com sucesso!"
+        return render_template('cadastrar.html', mensagem = mensagem)
     return render_template('cadastrar.html')
 
 
@@ -63,7 +77,6 @@ def login():
         senha = request.form['lsenha']
         return render_template('index.html', mat = matricula, sen = senha)
     return render_template('login.html')
-
 
 
 if __name__ == '__main__':

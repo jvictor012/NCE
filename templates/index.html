@@ -17,7 +17,9 @@
       enctype="multipart/form-data"
     >
       <h1>Inserir Nova Notícia</h1>
-
+      {% if imagem %}
+      <img src="{{ url_for('imagem') }}" alt="Imagem enviada" />
+      {% endif %}
       <!-- Título -->
       <label for="titulo">Título da Notícia:</label>
       <input type="text" id="titulo" name="titulo" maxlength="70" required />
