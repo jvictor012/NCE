@@ -12,6 +12,37 @@ from bd import executar_comandos
 
 app = Flask(__name__)
 app.secret_key = 'chave_muito_secreta'
+# ===== Configuração do Flask-Login (ativa e correta) =====
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login_submit"
+
+class User(UserMixin):
+    def __init__(self, id, nome, email, senha=None):
+        # flask-login exige atributo .id (string ou int)
+        self.id = str(id)
+        self.nome = nome
+        self.email = email
+        self.senha = senha
+
+    def __repr__(self):
+        return f"<User {self.id} {self.nome}>"
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    try:
+        query = "SELECT id, nome, matricula, email FROM user WHERE id = ?"
+        valores = (user_id,)
+        resultado = executar_comandos(query, valores, fetchone=True, retornar_id=False)
+
+        if resultado:
+            id_db, nome_usuario, email = resultado
+            return User(id_db, nome_usuario, email)
+    except Exception as e:
+        app.logger.error("load_user error: %s", e)
+
+    return None
 
 
 
@@ -51,15 +82,23 @@ def perfil():
 @app.route('/cadastrar', methods = ['GET', 'POST'])
 def cadastrar():
     if request.method == 'POST':
-        email = request.form.get('cemail')
-        matricula = request.form.get('cmatricula')
-        senha = request.form.get('csenha')
-        senha_hash = bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-        query = '''INSERT INTO usuario(email, matricula, senha_hash) VALUES(%s,%s,%s)'''
-        valores = (email, matricula, senha_hash)
-        executar_comandos(query, valores, retornar_id=False)
-        mensagem = "Cadastro efetuado com sucesso!"
-        return render_template('cadastrar.html', mensagem = mensagem)
+        try:
+            nome = request.form.get('cenome')
+            email = request.form.get('cemail')
+            matricula = request.form.get('cmatricula')
+            senha = request.form.get('csenha')
+            senha_hash = bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+            query = '''INSERT INTO user(email, matricula, senha_hash) VALUES(%s,%s,%s)'''
+            valores = (email, matricula, senha_hash)
+            executar_comandos(query, valores, retornar_id=False)
+            mensagem = "Cadastro efetuado com sucesso!"
+            return render_template('cadastrar.html', mensagem = mensagem)
+        
+        except Exception as e:
+            app.logger.exception("Erro ao cadastrar usuário: %s", e)
+            erro = "Ocorreu um erro. Por favor, tente novamente!"
+            return render_template("cadastro.html", erro=erro)
+        
     return render_template('cadastrar.html')
 
 

@@ -10,11 +10,21 @@
       <label for="cemail">Email: </label>
       <input id="cemail" type="email" name="cemail" required />
 
+      <label for="cenome">Nome: </label>
+      <input id="cenome" type="text" name="cenome" required />
+      
       <label for="cmatricula">Matricula:</label>
       <input id="cmatricula" type="number" name="cmatricula" required />
 
       <label for="csenha">Senha:</label>
       <input id="csenha" type="password" name="csenha" required />
+
+      <input id="ctipo1" type="radio" name="ctipo" value="admin">
+      <label for="ctipo1">Administrador</label>
+      
+      <input id="ctipo2" type="radio" name="ctipo" value="usuario">
+      <label for="ctipo2">Usuário</label>
+            
       <button type="submit">Enviar</button>
     </form>
     <a href="{{url_for('login')}}">Já tenho uma conta!</a>
