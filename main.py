@@ -1,7 +1,14 @@
 from flask import Flask, render_template, request, send_file
+from flask_login import (
+    LoginManager,
+    login_user,
+    logout_user,
+    login_required,
+    UserMixin,
+    current_user,
+)
 import bcrypt
 from bd import executar_comandos
-from io import BytesIO
 
 app = Flask(__name__)
 app.secret_key = 'chave_muito_secreta'
@@ -30,19 +37,7 @@ def home():
         imagem2 = request.files.get('imagem2')
         imagem3 = request.files.get('imagem3')
         binario = imagem1.read()
-        # Salva na memória para a outra rota
-        with open('temp_image', 'wb') as f:
-            f.write(binario)
-        return render_template('index.html', imagem=True)
     return render_template('index.html', imagem=False)
-
-# Rota para enviar a imagem
-@app.route('/imagem')
-def imagem():
-    with open('temp_image', 'rb') as f:
-        original = BytesIO(f.read())
-    return send_file(original, download_name='imagem.jpg', mimetype='image/jpeg')
-
 
 @app.route('/perfil', methods=['GET', 'POST'])
 def perfil():
