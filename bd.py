@@ -1,32 +1,33 @@
-import mysql.connector
+import sqlite3
 
-def executar_comandos(query, valores=None, fetchone=False, fetchall=False, retornar_id=False):
-    conexao = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="JoãoVictor15",
-        database="nce"
-    )
-    cursor = conexao.cursor()
+DB_PATH = 'nce.db'
 
-    cursor.execute(query, valores)
+def executar_comandos(query, valores=None, fetchone=False, retornar_id=False):
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row  # permite acessar colunas por nome
+        cur = conn.cursor()
 
-    resultado = None
-    if retornar_id:
-        # Caso de INSERT
-        conexao.commit()
-        resultado = cursor.lastrowid
+        if valores:
+            cur.execute(query, valores)
+        else:
+            cur.execute(query)
 
-    elif fetchone:
-        # Caso de SELECT com apenas 1 resultado
-        resultado = cursor.fetchone()
+        if retornar_id:
+            conn.commit()
+            return cur.lastrowid
 
-    else:
-        # Caso de SELECT com vários resultados
-        resultado = cursor.fetchall()
+        if fetchone:
+            resultado = cur.fetchone()
+        else:
+            resultado = cur.fetchall()
 
-    conexao.commit()
-    cursor.close()
-    conexao.close()
+        conn.commit()
+        return resultado
 
-    return resultado
+    except Exception as e:
+        print("ERRO SQLITE:", e)
+        return None
+
+    finally:
+        conn.close()
