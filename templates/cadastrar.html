@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro</title>
+    <link rel="stylesheet" href="/static/padrao.css">
+    <script src="/static/scripts/cadastro.js"></script>
+
   </head>
   <body>
     <form action="{{url_for('cadastrar')}}" method="post">
@@ -19,10 +22,10 @@
       <label for="csenha">Senha:</label>
       <input id="csenha" type="password" name="csenha" required />
 
-      <input id="ctipo1" type="radio" name="ctipo" value="admin">
+      <input id="ctipo" type="radio" name="ctipo" value="admin">
       <label for="ctipo1">Administrador</label>
       
-      <input id="ctipo2" type="radio" name="ctipo" value="usuario">
+      <input id="ctipo" type="radio" name="ctipo" value="usuario">
       <label for="ctipo2">Usuário</label>
             
       <button type="submit">Enviar</button>

@@ -1,0 +1,10 @@
+O ARQUIVO requirements.txt TEM TODAS AS BIBLIOTECAS NECESSÁRIAS, PARA BAIXÁ-LAS DE UMA VEZ, EXECUTE NO TERMINAL:
+pip install -r requirements.txt
+
+
+
+Se der algum erro dizendo que você não tem uma biblioteca instalada, instale e dps eu corrijo. 
+
+
+
+NAVEGUE PELO MAIN.PY RODANDO ELE, AI VC VAI ANDANDO PELAS TELAS USANDO AS ROTAS, EX: /home, /perfil...
