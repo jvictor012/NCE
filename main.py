@@ -23,15 +23,6 @@ def noticias():
 @app.route('/home', methods=['POST', 'GET'])
 def home():
     if request.method == 'POST':
-        imagens = ["imagem1","imagem2","imagem3"]
-
-
-        for campo in imagens:
-            arquivo = request.files.get(campo)
-            if arquivo and arquivo.filename != None:
-                upload = cloudinary.uploader.upload(arquivo)
-                supabase.table("images_links").insert({'image_url' : upload['secure_url']}).execute()
-
         noticia = {'titulo':request.form['titulo'],
                    'categoria':request.form['categoria'],
                    'conteudo':request.form['conteudo'],
@@ -39,9 +30,22 @@ def home():
                    'link2':request.form.get('link2'),
                    'link3':request.form.get('link3'),
                    'link4':request.form.get('link4'),
-                   'link5':request.form.get('link5')}
+                   'link5':request.form.get('link5')
+                   }
         noticia = supabase.table("noticias").insert(noticia).execute()
-        print("Feito")
+        id_noticia = noticia.data[0]['id']
+
+
+        imagens = ["imagem1","imagem2","imagem3"]
+
+        for campo in imagens:
+            arquivo = request.files.get(campo)
+            if arquivo and arquivo.filename != None:
+                upload = cloudinary.uploader.upload(arquivo)
+                link_up = upload['secure_url']
+                supabase.table("images_links").insert({'noticia_id':id_noticia, 'image_url': link_up}).execute()
+
+        
         
     
 
