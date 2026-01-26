@@ -17,7 +17,31 @@ config = cloudinary.config(secure=True)
 
 @app.route('/noticias')
 def noticias():
-    return render_template('home_user.html')
+    noticias_resp = supabase.table("noticias").select("titulo, created_at, conteudo, link1, link2, link3, link4, link5, categoria").execute()
+    imagens_resp = supabase.table("images_links").select("image_url").execute()
+
+    noticias_data = noticias_resp.data
+    imagens_data = imagens_resp.data 
+
+
+    noticias = []
+    for i, noticia in enumerate(noticias_data):
+        noticias.append(
+            {
+                "imagem" : imagens_data[i]["image_url"] if i < len(imagens_data) else None, 
+                "titulo" : noticia["titulo"],
+                "created_at" : noticia["created_at"],
+                "conteudo" : noticia["conteudo"],
+                "link1" : noticia["link1"],
+                "link1" : noticia["link1"],
+                "link1" : noticia["link1"],
+                "link1" : noticia["link1"],
+                "link1" : noticia["link1"],
+                "categoria" : noticia["categoria"]
+            }
+        )
+    
+    return render_template('home_user.html', noticias=noticias)
 
 
 @app.route('/home', methods=['POST', 'GET'])

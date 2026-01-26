@@ -52,5 +52,16 @@
         </footer> 
       </header>
     </section>
+    {% for n in noticias %}
+      <h2 class="titulo">{{ n.titulo }}</h2>
+      <p>{{ n.created_at }} - {{ n.categoria }}</p>
+      <img src="{{ n.imagem }}">
+      <p>{{ n.conteudo }}</p>
+      <a href="{{ n.link1 }}">{{ n.link1 }}</a>
+      <a href="{{ n.link2 }}">{{ n.link2 }}</a>
+      <a href="{{ n.link3 }}">{{ n.link3 }}</a>
+      <a href="{{ n.link4 }}">{{ n.link4 }}</a>
+      <a href="{{ n.link5 }}">{{ n.link5 }}</a>
+    {% endfor %}
   </body>
 </html>
