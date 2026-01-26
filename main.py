@@ -23,22 +23,14 @@ def noticias():
 @app.route('/home', methods=['POST', 'GET'])
 def home():
     if request.method == 'POST':
-        image1 = request.files['imagem1']
-        image2 = request.files['imagem2']
-        image3 = request.files['imagem3']
+        imagens = ["imagem1","imagem2","imagem3"]
 
 
-        res1 = cloudinary.uploader.upload(image1)
-        imglink1 = res1["secure_url"]
-        
-        if image2:
-            res2 = cloudinary.uploader.upload(image2)
-            imglink2 = res2["secure_url"]
-
-        if image3:
-            res3 = cloudinary.uploader.upload(image3)
-            imglink3 = res3["secure_url"]
-
+        for campo in imagens:
+            arquivo = request.files.get(campo)
+            if arquivo and arquivo.filename != None:
+                upload = cloudinary.uploader.upload(arquivo)
+                supabase.table("images_links").insert({'image_url' : upload['secure_url']}).execute()
 
         noticia = {'titulo':request.form['titulo'],
                    'categoria':request.form['categoria'],
@@ -47,13 +39,11 @@ def home():
                    'link2':request.form.get('link2'),
                    'link3':request.form.get('link3'),
                    'link4':request.form.get('link4'),
-                   'link5':request.form.get('link5'),
-                   'imglink1': imglink1,
-                   'imglink2': None,
-                   'imglink3': None}
+                   'link5':request.form.get('link5')}
         noticia = supabase.table("noticias").insert(noticia).execute()
         print("Feito")
         
+    
 
     return render_template('index.html')
 
