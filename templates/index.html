@@ -17,18 +17,15 @@
     </header>
 
     <form
-      action="{{ url_for('home') }}"
-      method="post"
+      action="/home"
+      method="POST"
       enctype="multipart/form-data"
     >
       <h1>Inserir Nova Notícia</h1>
-      {% if imagem %}
-      <img src="{{ url_for('imagem') }}" alt="Imagem enviada" />
-      {% endif %}
       <!-- Título -->
       <label for="titulo">Título da Notícia:</label>
       <input type="text" id="titulo" name="titulo" maxlength="70" required />
-
+    
       <!-- Imagens -->
       <h2>Insira no mínimo uma imagem e no máximo 3 imagens</h2>
       <label for="imagem1">Imagem 1:</label>
@@ -132,6 +129,6 @@
       <!-- Botão -->
       <button type="submit">Enviar Notícia</button>
     </form>
-    <p>{{ mensagem }}</p>
+    <a href = "{{ mensagem }}">{{ mensagem }}</a>
   </body>
 </html>
