@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.secret_key = 'chave_muito_secreta'
 config = cloudinary.config(secure=True)
 
-@app.route('/noticias')
+@app.route('/')
 def noticias():
     noticias_resp = supabase.table("noticias").select("titulo, created_at, conteudo, link1, link2, link3, link4, link5, categoria").execute()
     imagens_resp = supabase.table("images_links").select("image_url").execute()
@@ -42,7 +42,27 @@ def noticias():
         )
     
     return render_template('home_user.html', noticias=noticias)
+    
 
+@app.route('/eventos')
+def eventos():
+    #fazer a consulta e printar os eventos
+    selecao = supabase.table("noticias").select('created_at, titulo, conteudo, categoria').in_('categoria', ['Eventos Esportivos', 'Eventos Educacionais']).order('created_at', desc=True).execute()
+    imagens_resp = supabase.table("images_links").select("image_url").execute()
+
+    selecao_data = selecao.data
+    imagens_data = imagens_resp.data 
+
+    eventos = []
+    for i, evento in enumerate(selecao_data):
+        eventos.append({
+            "imagem": imagens_data[i]["image_url"] if i < len(imagens_data) else None,
+            "created_at": evento["created_at"],
+            "titulo": evento["titulo"],
+            "conteudo": evento["conteudo"],
+            "categoria": evento["categoria"]
+        })
+    return render_template("eventos.html", evento = eventos)
 
 @app.route('/home', methods=['POST', 'GET'])
 def home():
@@ -101,7 +121,7 @@ def cadastrar():
     return render_template('cadastrar.html')
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
 

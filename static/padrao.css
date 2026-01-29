@@ -1,34 +1,6 @@
-
-h1 {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 4rem;
-  margin: 0;
-}
-
-h2 {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
-  font-size: 1.5rem;
-  margin: 0;
-
-}
-label, p, a, button {
-  font-family: "Nunito", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-  margin: 0;
-  font-size: 1rem;
-
-}
-
 body{
   margin: 0;
-  background-color: #c8c8c8!important;
+  background-color: #175738;
   width: 100%;
   height: 100%;
 }
