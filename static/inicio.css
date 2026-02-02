@@ -4,5 +4,28 @@
     align-items: start;
     flex-direction: column;
     width: 70%;
+    height: 95vh;
     overflow-y: auto;
+    justify-self: end;
+    margin-top: 5vh;
+}
+
+.noticia{
+    padding: 10px;
+}
+
+h2{
+    font-family: "Calistoga", serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 0.1rem;
+}
+
+.data p{
+    font-size: 0.6rem;
+}
+
+.noticia img{
+    width: 250px;
+    height: 220px;
 }

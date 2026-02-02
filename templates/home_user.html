@@ -8,7 +8,11 @@
     <script src="scripts/supabase-nce.js"></script>
     <link rel="stylesheet" href="/static/header.css">
     <link rel="stylesheet" href="/static/inicio.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,1,0&icon_names=home_and_garden" />  </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,1,0&icon_names=home_and_garden" />  
+  </head>
   <body>
     <div class="snack_bar">
       <div class="icon_cap">
@@ -46,19 +50,23 @@
         </footer> 
       </header>
     </section>
-
+    <section class="container-geral"></section>
     <div class="navigation">
-      {% for n in noticias %}
-        <h2 class="titulo">{{ n.titulo }}</h2>
-        <p>{{ n.created_at }} - {{ n.categoria }}</p>
-        <img src="{{ n.imagem }}">
-        <p>{{ n.conteudo }}</p>
-        <a href="{{ n.link1 }}">{{ n.link1 }}</a>
-        <a href="{{ n.link2 }}">{{ n.link2 }}</a>
-        <a href="{{ n.link3 }}">{{ n.link3 }}</a>
-        <a href="{{ n.link4 }}">{{ n.link4 }}</a>
-        <a href="{{ n.link5 }}">{{ n.link5 }}</a>
-      {% endfor %}
+      <div class="noticia">
+        {% for n in noticias %}
+          <h2 class="titulo">{{ n.titulo }}</h2>
+          <div class="data">
+            <p>{{ n.created_at }} - {{ n.categoria }}</p>
+          </div>
+          <img src="{{ n.imagem }}">
+          <p>{{ n.conteudo }}</p>
+          <a href="{{ n.link1 }}">{{ n.link1 }}</a>
+          <a href="{{ n.link2 }}">{{ n.link2 }}</a>
+          <a href="{{ n.link3 }}">{{ n.link3 }}</a>
+          <a href="{{ n.link4 }}">{{ n.link4 }}</a>
+          <a href="{{ n.link5 }}">{{ n.link5 }}</a>
+        {% endfor %}
+      </div>
     </div>
     
   </body>
