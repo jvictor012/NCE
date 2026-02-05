@@ -23,11 +23,6 @@
       <div class="profile"><img src="/static/images/seetings.png" alt="perfil"></div>
     </div>
     <section class="barra_lateral">
-      <div class="botao">
-        <button id="navbar_open" class="botao_open">
-              >
-        </button>
-      </div>
       <header id="header"class="header">
         <div class="navegar">
           <div class="text"><h2>MENU</h2></div>
@@ -58,6 +53,11 @@
     </section>
     <section class="container-geral"></section>
     <div id="navigation"class="navigation">
+      <div class="botao">
+        <button id="navbar_open2" class="botao_open">
+              <img id="seta" src="/static/images/seta.png">
+        </button>
+      </div>
       <div class="noticia">
         {% for n in noticias %}
           <h2 class="titulo">{{ n.titulo }}</h2>
@@ -78,20 +78,25 @@
   </body>
   <script>
     let aberto = true
-    let botao = document.getElementById("navbar_open")
+    let seta = document.getElementById("seta")
+    let botao2 = document.getElementById("navbar_open2")
     let header = document.getElementById("header")
     let navegar = document.getElementById("navigation")
-    botao.addEventListener("click", ()=>{
+    botao2.addEventListener("click", ()=>{
       if (aberto){
         header.style.transform = "translateX(-100%)"
         navegar.style.width = "100%"
+        botao2.style.transform = "translateX(55%)"
+        seta.style.rotate = "180deg"
       }
       else {
         header.style.transform = "translateX(0)"
         navegar.style.width = "70%"
+        botao2.style.transform = "translateX(0)"
+        seta.style.rotate = "0deg"
       }
       aberto =! aberto
-    })  
+    })
     botao.onclick = open
   </script>
 </html>
