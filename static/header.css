@@ -16,7 +16,7 @@ body{
     height: 5vh;
     display: flex;
     position: fixed;   
-    border-bottom: solid 2px #000000; 
+    border-bottom: solid 0.5px #000000; 
     z-index: 100000;
 }
 
@@ -26,12 +26,20 @@ body{
     height: 5vh;
     justify-content: end;
     padding-right: 4px;
-    border-bottom: solid 2px #000000;
+    border-bottom: solid 0.5px #000000;
 }
 
 .icon_cap{
     display: flex;
     width: 30%;
+}
+
+.icon_cap img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: auto;
 }
 
 header{
@@ -45,6 +53,7 @@ header{
     bottom:0;
     align-items: center;
     justify-content: space-between;
+    border-right: solid 0.5px black;
 }
 
 .img{
@@ -86,3 +95,26 @@ a{
     color: aliceblue;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.snack_bar button{
+    width: min-content;
+    background-color: #175738;
+    border: none;
+}
+
+.navbar_open{
+    display: flex;
+    align-items: center;
+}
+
+.botao{
+    display: flex;
+    z-index: 10000;
+    height: 100vh;
+
+}
+
+.barra_lateral{
+    display:flex;
+}
+

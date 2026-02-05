@@ -16,12 +16,19 @@
   <body>
     <div class="snack_bar">
       <div class="icon_cap">
-        <img src="/static/images/icon_white.png">
+        <button id="navbar_open" class="navbar_open">
+           <img src="/static/images/icon_white.png">
+        </button>
       </div>
       <div class="profile"><img src="/static/images/seetings.png" alt="perfil"></div>
     </div>
-    <section>
-      <header class="header">
+    <section class="barra_lateral">
+      <div class="botao">
+        <button id="navbar_open" class="botao_open">
+              >
+        </button>
+      </div>
+      <header id="header"class="header">
         <div class="navegar">
           <div class="text"><h2>MENU</h2></div>
           <div class="icon-link">
@@ -44,14 +51,13 @@
             <a>EQUIPE</a>
           </div>
         </div>
-
         <footer class="footer">
           <p>NCE - 2026</p>
-        </footer> 
+        </footer>
       </header>
     </section>
     <section class="container-geral"></section>
-    <div class="navigation">
+    <div id="navigation"class="navigation">
       <div class="noticia">
         {% for n in noticias %}
           <h2 class="titulo">{{ n.titulo }}</h2>
@@ -70,4 +76,22 @@
     </div>
     
   </body>
+  <script>
+    let aberto = true
+    let botao = document.getElementById("navbar_open")
+    let header = document.getElementById("header")
+    let navegar = document.getElementById("navigation")
+    botao.addEventListener("click", ()=>{
+      if (aberto){
+        header.style.transform = "translateX(-100%)"
+        navegar.style.width = "100%"
+      }
+      else {
+        header.style.transform = "translateX(0)"
+        navegar.style.width = "70%"
+      }
+      aberto =! aberto
+    })  
+    botao.onclick = open
+  </script>
 </html>
