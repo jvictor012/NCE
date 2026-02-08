@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias</title>
+    <link rel="stylesheet" href="/static/padrao.css">
+    <link rel="stylesheet" href="/static/header.css">
+    <link rel="stylesheet" href="/static/inicio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,1,0&icon_names=home_and_garden" />
+
+</head>
+
+<body>
+    <div class="snack_bar">
+        <div class="icon_cap">
+            <button id="navbar_open" class="navbar_open">
+                <img src="/static/images/icon_white.png">
+            </button>
+        </div>
+        <div class="profile"><a href="/perfil"><img src="/static/images/do-utilizador.png" alt="perfil"></a></div>
+    </div>
+    <section class="barra_lateral">
+        <header id="header" class="header">
+            <div class="navegar">
+                <div class="text">
+                    <h2>MENU</h2>
+                </div>
+                <div class="icon-link">
+                    <img class="img" src="/static/images/casa.png"><a href="/">INICIO</a>
+                </div>
+                <div class="icon-link">
+                    <img class="img" src="/static/images/megafone.png"><a href="/noticias">NOTÍCIAS</a>
+                </div>
+                <div class="icon-link">
+                    <img class="img" src="/static/images/calendario.png"><a href="/eventos">EVENTOS</a>
+                </div>
+                <div class="icon-link">
+                    <img class="img" src="/static/images/chamada-telefonica.png"><a href="/contatos">CONTATOS</a>
+                </div>
+                <div class="icon-link">
+                    <img class="img" src="/static/images/definicoes.png"><a href="/home">EQUIPE</a>
+                </div>
+            </div>
+            <footer class="footer">
+                <p>NCE - 2026</p>
+            </footer>
+        </header>
+    </section>
+    <div id="navigation" class="navigation">
+        <div class="predefinido">
+            <img src="/static/images/logotipo.png">
+        </div>
+        <div class="botao">
+            <button id="navbar_open2" class="botao_open">
+                <img id="seta" src="/static/images/seta.png">
+            </button>
+        </div>
+        <form action="{{ url_for('filtrar') }}" method="post">
+            <label for="filtro">
+                <h3>Filtrar:</h3>
+            </label>
+            <select id="filtro" name="filtro">
+                <option value="">Todos</option>
+
+                <option value="Projeto Integrador" {% if filtragem == "Projeto Integrador" %}selected{% endif %}>
+                    Projeto Integrador
+                </option>
+
+                <option value="Projeto de Pesquisa" {% if filtragem == "Projeto de Pesquisa" %}selected{% endif %}>
+                    Projeto de Pesquisa
+                </option>
+
+                <option value="Projeto de Extensão" {% if filtragem == "Projeto de Extensão" %}selected{% endif %}>
+                    Projeto de Extensão
+                </option>
+
+                <option value="Premiações" {% if filtragem == "Premiações" %}selected{% endif %}>
+                    Premiações
+                </option>
+
+                <option value="Processos Seletivos" {% if filtragem == "Processos Seletivos" %}selected{% endif %}>
+                    Processos Seletivos
+                </option>
+
+                <option value="Eventos Esportivos" {% if filtragem == "Eventos Esportivos" %}selected{% endif %}>
+                    Eventos Esportivos
+                </option>
+
+                <option value="Eventos Educacionais" {% if filtragem == "Eventos Educacionais" %}selected{% endif %}>
+                    Eventos Educacionais
+                </option>
+            </select>
+
+            <button type="submit">Filtrar <div class="imagem_filtrar"><img src="/static/images/filtro.png"></div></button>
+        </form>
+        {% for i in noticias %}
+        <div class="noticia">
+            <div class="title">
+                <h2 class="titulo">{{ i.titulo }}</h2>
+            </div>
+            <div class="data">
+                <p>{{ i.created_at }} - {{ i.categoria }}</p>
+            </div>
+            <div class="imagem">
+                <img src="{{ i.imagem }}">
+            </div>
+            <div class="btn"></div>
+            <button class="btn-detalhes" onclick="toggleDetalhes(this)">Detalhes</button>
+
+            <div class="detalhes">
+                <div class="content">
+                    <p>{{ i.conteudo }}</p>
+                </div>
+                <div class="links">
+                    <a href="{{ i.link1 }}">{{ i.link1 }}</a>
+                    <a href="{{ i.link2 }}">{{ i.link2 }}</a>
+                    <a href="{{ i.link3 }}">{{ i.link3 }}</a>
+                    <a href="{{ i.link4 }}">{{ i.link4 }}</a>
+                    <a href="{{ i.link5 }}">{{ i.link5 }}</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+<script>
+    let aberto = true
+    let seta = document.getElementById("seta")
+    let botao2 = document.getElementById("navbar_open2")
+    let header = document.getElementById("header")
+    let navegar = document.getElementById("navigation")
+    botao2.addEventListener("click", () => {
+        if (aberto) {
+            header.style.transform = "translateX(-100%)"
+            navegar.style.width = "100%"
+            botao2.style.transform = "translateX(55%)"
+            seta.style.rotate = "180deg"
+        } else {
+            header.style.transform = "translateX(0)"
+            navegar.style.width = "70%"
+            botao2.style.transform = "translateX(0)"
+            seta.style.rotate = "0deg"
+        }
+        aberto = !aberto
+    })
+
+    function toggleDetalhes(botao) {
+        const detalhes = botao.nextElementSibling;
+        detalhes.classList.toggle("ativo");
+        botao.classList.toggle("ativo");
+        if (detalhes.classList.contains("ativo")) {
+            botao.innerText = "Ver menos";
+        } else {
+            botao.innerText = "Ver mais";
+        }
+    }
+</script>
+
+</body>
+
+</html>

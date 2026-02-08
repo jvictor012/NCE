@@ -1,134 +1,207 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NCE - Nova Notícia</title>
-    <script src="scripts/supabase-nce.js"></script>
-    <link rel="stylesheet" href="/static/padrao.css">
-    
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NCE - Nova Notícia</title>
+  <script src="scripts/supabase-nce.js"></script>
+  <link rel="stylesheet" href="/static/padrao.css">
+  <link rel="stylesheet" href="/static/header.css">
+  <link rel="stylesheet" href="/static/inicio.css">
+  <link rel="stylesheet" href="/static/contatos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,1,0&icon_names=home_and_garden" />
+</head>
 
-  </head>
-  <body>
-    <header>
-      <a href="{{ url_for('login') }}">Sair</a>
-      <a href="{{ url_for('perfil') }}">Perfil</a>
+<body>
+  <div class="snack_bar">
+    <div class="icon_cap">
+      <button id="navbar_open" class="navbar_open">
+        <img src="/static/images/icon_white.png">
+      </button>
+    </div>
+    <div class="profile"><a href="/perfil"><img src="/static/images/do-utilizador.png" alt="perfil"></a></div>
+  </div>
+  <section class="barra_lateral">
+    <header id="header" class="header">
+      <div class="navegar">
+        <div class="text">
+          <h2>MENU</h2>
+        </div>
+        <div class="icon-link">
+          <img class="img" src="/static/images/casa.png"><a href="/">INICIO</a>
+        </div>
+        <div class="icon-link">
+          <img class="img" src="/static/images/megafone.png"><a href="/noticias">NOTÍCIAS</a>
+        </div>
+        <div class="icon-link">
+          <img class="img" src="/static/images/calendario.png"><a href="/eventos">EVENTOS</a>
+        </div>
+        <div class="icon-link">
+          <img class="img" src="/static/images/chamada-telefonica.png"><a href="/contatos">CONTATOS</a>
+        </div>
+        <div class="icon-link">
+          <img class="img" src="/static/images/definicoes.png"><a href="/home">EQUIPE</a>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>NCE - 2026</p>
+      </footer>
     </header>
+  </section>
+  <div id="navigation" class="navigation">
+    <div class="predefinido">
+      <img src="/static/images/logotipo.png">
+    </div>
+    <div class="botao">
+      <button id="navbar_open2" class="botao_open">
+        <img id="seta" src="/static/images/seta.png">
+      </button>
+    </div>
+    <form action="/home" method="POST" enctype="multipart/form-data">
 
-    <form
-      action="/home"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <h1>Inserir Nova Notícia</h1>
-      <!-- Título -->
-      <label for="titulo">Título da Notícia:</label>
-      <input type="text" id="titulo" name="titulo" maxlength="70" required />
-    
-      <!-- Imagens -->
-      <h2>Insira no mínimo uma imagem e no máximo 3 imagens</h2>
-      <label for="imagem1">Imagem 1:</label>
-      <input type="file" id="imagem1" name="imagem1" required />
+      <div class="noticia">
+        <div class="title">
+          <h2>Inserir Nova Notícia</h2>
+          <label for="titulo">
+            <h3>Título da Notícia:<h3>
+          </label>
+          <div class="insert"><input type="text" id="titulo" name="titulo" maxlength="70" required /></div>
+        </div>
+      </div>
 
-      <label for="imagem2">Imagem 2:</label>
-      <input type="file" id="imagem2" name="imagem2" />
+      <div class="noticia">
+        <div class="title">
+          <h2>Insira no mínimo uma imagem e no máximo 3 imagens</h2>
+          <label for="imagem1">
+            <h3>Imagem 1:<h3>
+          </label>
+          <input type="file" id="imagem1" name="imagem1" required />
+        </div>
+      </div>
 
-      <label for="imagem3">Imagem 3:</label>
-      <input type="file" id="imagem3" name="imagem3" />
+      <div class="noticia">
+        <div class="title">
+          <h2>Categorias:</h2>
+          <div class="radio">
+            <input type="radio" id="radio1" name="categoria" value="Oportunidades de Estágio" />
+            <label for="radio1">
+              <h3>Oportunidades de Estágio</h3>
+            </label>
+          </div>
 
-      <!-- Categorias -->
-      <h2>Categorias:</h2>
-      <input
-        type="radio"
-        id="radio1"
-        name="categoria"
-        value="Oportunidades de Estágio"
-      />
-      <label for="radio1">Oportunidades de Estágio</label>
+          <div class="radio">
+            <input type="radio" id="radio2" name="categoria" value="Projeto Integrador" />
+            <label for="radio2">
+              <h3>Projeto Integrador</h3>
+            </label>
+          </div>
 
-      <input
-        type="radio"
-        id="radio2"
-        name="categoria"
-        value="Projeto Integrador"
-      />
-      <label for="radio2">Projeto Integrador</label>
+          <div class="radio">
+            <input type="radio" id="radio3" name="categoria" value="Projeto de Pesquisa" />
+            <label for="radio3">
+              <h3>Projeto de Pesquisa</h3>
+            </label>
+          </div>
 
-      <input
-        type="radio"
-        id="radio3"
-        name="categoria"
-        value="Projeto de Pesquisa"
-      />
-      <label for="radio3">Projeto de Pesquisa</label>
+          <div class="radio">
+            <input type="radio" id="radio4" name="categoria" value="Projeto de Extensão" />
+            <label for="radio4">
+              <h3>Projeto de Extensão</h3>
+            </label>
 
-      <input
-        type="radio"
-        id="radio4"
-        name="categoria"
-        value="Projeto de Extensão"
-      />
-      <label for="radio4">Projeto de Extensão</label>
+          </div>
 
-      <input type="radio" id="radio5" name="categoria" value="Premiações" />
-      <label for="radio5">Premiações</label>
+          <div class="radio">
+            <input type="radio" id="radio5" name="categoria" value="Premiações" />
+            <label for="radio5">
+              <h3>Premiações</h3>
+            </label>
+          </div>
 
-      <input
-        type="radio"
-        id="radio6"
-        name="categoria"
-        value="Processos Seletivos"
-      />
-      <label for="radio6">Processos Seletivos</label>
+          <div class="radio">
+            <input type="radio" id="radio6" name="categoria" value="Processos Seletivos" />
+            <label for="radio6">
+              <h3>Processos Seletivos</h3>
+            </label>
+          </div>
 
-      <input
-        type="radio"
-        id="radio7"
-        name="categoria"
-        value="Eventos Esportivos"
-      />
-      <label for="radio7">Eventos Esportivos</label>
+          <div class="radio">
+            <input type="radio" id="radio7" name="categoria" value="Eventos Esportivos" />
+            <label for="radio7">
+              <h3>Eventos Esportivos</h3>
+            </label>
+          </div>
 
-      <input
-        type="radio"
-        id="radio8"
-        name="categoria"
-        value="Eventos Educacionais"
-      />
-      <label for="radio8">Eventos Educacionais</label>
+          <div class="radio">
+            <input type="radio" id="radio8" name="categoria" value="Eventos Educacionais" />
+            <label for="radio8">
+              <h3>Eventos Educacionais</h3>
+            </label>
 
-      <!-- Conteúdo -->
-      <h2>Informações sobre a nova notícia</h2>
-      <label for="conteudo">Conteúdo da Notícia:</label>
-      <textarea
-        id="conteudo"
-        name="conteudo"
-        minlength="100"
-        maxlength="5000"
-        required
-      ></textarea>
+          </div>
 
-      <!-- Links opcionais -->
-      <p>Insira os links abaixo (Não obrigatório)</p>
-      <label for="link1">Link 1:</label>
-      <input type="url" id="link1" name="link1" />
+        </div>
+      </div>
 
-      <label for="link2">Link 2:</label>
-      <input type="url" id="link2" name="link2" />
+      <div class="noticia">
+        <div class="title">
+          <h2>Informações sobre a nova notícia</h2>
+          <label for="conteudo"><h3>Conteúdo da Notícia:<h3></label>
+          <textarea id="conteudo" name="conteudo" minlength="100" maxlength="5000" required></textarea>
+        </div>
+      </div>
+      
+      
+      
+      <div class="noticia">
+        <div class="title">
+          <h2>Insira os links abaixo (Opcional)</h2>
+          <label for="link1"><h3>Link 1:</h3></label>
+          <input type="url" id="link1" name="link1" />
+          <label for="link2"><h3>Link 2:</h3></label>
+          <input type="url" id="link2" name="link2" />
+          <label for="link3"><h3>Link 3:</h3></label>
+          <input type="url" id="link3" name="link3" />
+          <label for="link4"><h3>Link 4:</h3></label>
+          <input type="url" id="link4" name="link4" />
+          <label for="link5"><h3>Link 5:</h3></label>
+          <input type="url" id="link5" name="link5" />
+        </div>
+      </div>
 
-      <label for="link3">Link 3:</label>
-      <input type="url" id="link3" name="link3" />
-
-      <label for="link4">Link 4:</label>
-      <input type="url" id="link4" name="link4" />
-
-      <label for="link5">Link 5:</label>
-      <input type="url" id="link5" name="link5" />
-
-      <!-- Botão -->
-      <button type="submit">Enviar Notícia</button>
+      <div class="button">
+        <button type="submit">Enviar Notícia <div class="img_ok"><img src="/static/images/verificar.png" alt="Ícone de confirmação"></div></button>
+      </div>
+      
     </form>
-    <a href = "{{ mensagem }}">{{ mensagem }}</a>
-  </body>
+    <div class="msg_erro">
+      <a href="{{ mensagem }}">{{ mensagem }}</a>
+    </div>
+  </div>
+</body>
+<script>
+  let aberto = true
+  let seta = document.getElementById("seta")
+  let botao2 = document.getElementById("navbar_open2")
+  let header = document.getElementById("header")
+  let navegar = document.getElementById("navigation")
+  botao2.addEventListener("click", () => {
+    if (aberto) {
+      header.style.transform = "translateX(-100%)"
+      navegar.style.width = "100%"
+      botao2.style.transform = "translateX(55%)"
+      seta.style.rotate = "180deg"
+    } else {
+      header.style.transform = "translateX(0)"
+      navegar.style.width = "70%"
+      botao2.style.transform = "translateX(0)"
+      seta.style.rotate = "0deg"
+    }
+    aberto = !aberto
+  })
+</script>
+
 </html>

@@ -20,14 +20,6 @@ body{
     z-index: 100000;
 }
 
-.profile{
-    display: flex;
-    width: 70%;
-    height: 5vh;
-    justify-content: end;
-    padding-right: 4px;
-    border-bottom: solid 0.5px #000000;
-}
 
 .icon_cap{
     display: flex;
@@ -51,22 +43,34 @@ header{
     display: flex;
     flex-direction: column;
     bottom:0;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
     border-right: solid 0.5px black;
 }
-
-.img{
-    background-color: aqua;
+.navegar img{
     width: 30px;
     height: 30px;
+}
+
+.profile{
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.profile img{
+    margin: 5px;
+    width: 20px;
+    height: 20px;
 }
 
 .navegar{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     align-items: center;
+    margin: 5px;
 }
 
 a{
@@ -94,6 +98,10 @@ a{
     font-size: 1rem;
     color: aliceblue;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .snack_bar button{

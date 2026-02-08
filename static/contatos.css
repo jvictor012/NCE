@@ -1,0 +1,13 @@
+.contatos h1{
+    font-family: "Calistoga", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    color: aliceblue;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.contatos{
+    color: aquamarine;
+}

@@ -1,4 +1,4 @@
-.navigation{
+.navigation {
     background-color: rgb(255, 255, 255);
     display: flex;
     align-items: start;
@@ -10,45 +10,410 @@
     margin-top: 5vh;
 }
 
-.noticia{
+/*TITULO, PARAGRAFO E TODO O RESTO*/
+
+.noticia {
+    width: 90%;
+    height: auto;
+    margin-bottom: 20%;
+    background-color: #175738;
+    border-radius: 10px;
+    margin: 1rem auto;
+    border: solid 1px black;
+    box-shadow: 0px 5px 0px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: start;
     padding: 10px;
 }
 
-h2{
+.title, label, .insert, input{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    flex-direction: column;
+}
+
+.title h2{
     font-family: "Calistoga", serif;
     font-weight: 400;
     font-style: normal;
-    margin-bottom: 0.1rem;
+    font-size: 1rem;
+    color: aliceblue;
+    width: 100%;
+    word-wrap: break-word;
 }
 
-.data p{
-    font-size: 0.6rem;
+.title h3{
+    font-family: "Calistoga", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    color: aliceblue;
+    width: 100%;
+    margin: 0;
+    word-wrap: break-word;
 }
 
-.noticia img{
-    width: 250px;
-    height: 220px;
+.data p {
+    font-size: 0.8rem;
 }
-.botao{
+
+.content p{
+    font-size: 0.9rem;
+    color: white;
+    width: 100%;
+    text-align: start;
+    margin: 0;
+    padding: 0;
+    display: flex;
+} 
+
+.content{
+    width: 100%;
+    height: auto;
+    text-align: start;
+    word-break: break-word;
+}
+
+/*--TITULO, PARAGRAFO E TODO O RESTO--*/
+
+.botao {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.botao .botao_open{
+.botao .botao_open {
     background-color: white;
     height: 60px;
     width: 30px;
     position: absolute;
-    top:50%;
-    border-radius:20px ;
+    top: 50%;
+    border-radius: 20px;
     border: solid 1px black;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
 }
 
-.botao .botao_open img{
+.botao .botao_open img {
     height: 30px;
     width: auto;
+}
+
+.data{
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    text-align: start;
+    color: aliceblue;
+    margin: 10px;
+}
+
+
+.imagem img{
+    width: 100%;
+    border-radius: 10px;
+    border: solid 1px black;
+}
+.imagem{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    
+}
+
+.predefinido {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+}
+
+.predefinido img{
+    width: 200px;
+    height: auto;
+}
+
+/*Aqui eu vou fazer o detalhe dos botões*/
+.detalhes{
+    display: none;
+    transition: 1s ease;
+    font-size: 0.8rem;
+}
+
+
+.detalhes.ativo{    
+    display: block;
+    transition: 0.5s ease;
+
+}
+
+.btn-detalhes{
+    width: 100%;
+    margin: 10px auto;
+    background-color: aliceblue;
+    border: solid 1px black;
+    border-radius: 10px;
+    box-shadow: 0px 3px 0px black;
+}
+
+
+.btn-detalhes.ativo{
+    width: 100%;
+    margin: 13px auto;
+    background-color: aliceblue;
+    border: solid 1px black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px black;
+}
+
+.sair {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sair a {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 0px 3px 0px black;
+    text-decoration: none;
+    color: black;
+    margin: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sair img{
+    width: 30px;
+    height: auto;
+    background-color: rgb(238, 80, 80);
+    border-radius: 20%;
+    padding: 5px ;
+}
+
+.insert{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+input{
+    border-radius: 5px;
+    border: solid 1px black;
+    margin: 0;
+}
+
+.radio{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-self: start;
+    margin: 10px 0;
+    
+}
+
+.radio label{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    width: 100%;
+}
+
+.radio input{
+    width: auto;
+    margin: 0;
+}
+
+label{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+textarea{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: solid 1px black;
+   
+}
+
+.button {
+    width: 100%;
+    margin: 40px 0;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button button{
+    width: 95%;
+    background-color: white;
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 0px 3px 0px black;
+    padding: 10px 20px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.img_ok img{
+    background-color: #1ba864;
+    border-radius: 50%;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.msg_erro{
+    color: rgb(238, 80, 80);
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100;
+}
+
+
+
+/*CONTATOS*/
+.contatos{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Calistoga", serif;
+    color: #175738;
+}
+
+.contatos p{
+    font-size: 1.2rem;
+    margin:5%;
+}
+
+.email a{
+    background-color: #a81b1b;
+    width: 80%;
+    color: white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 0px 3px 0px black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.Whatsapp a{
+    background-color: #1da035;
+    width: 80%;
+    color: white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 0px 3px 0px black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Instagram a{
+    background-color: #ce4281;
+    width: 80%;
+    color: white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 0px 3px 0px black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.email, .Instagram, .Whatsapp{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #1ba864;
+}
+
+/*FORM NOTICAIS*/
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+label h3{
+    font-family: "Calistoga", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem;
+    color:#175738;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+select{
+    width: 95%;
+    height: 40px;
+    border-radius: 5px;
+    border: solid 1px black;}
+
+form button{
+    width: 95%;
+    background-color: white;
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 0px 3px 0px black;
+    padding: 5px 10px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    margin:5px;
+}
+
+.imagem_filtrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.imagem_filtrar img{
+    width: 20px;
+    height: auto;
 }

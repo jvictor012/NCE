@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NCE</title>
-    <link href="/static/padrao.css" rel="stylesheet" />
-    <script src="scripts/supabase-nce.js"></script>
-    <link rel="stylesheet" href="/static/home_user.css">
-    <link rel="stylesheet" href="/static/header.css">
-    <link rel="stylesheet" href="/static/inicio.css">
-    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,1,0&icon_names=home_and_garden" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NCE - Nova Notícia</title>
+  <script src="scripts/supabase-nce.js"></script>
+  <link rel="stylesheet" href="/static/padrao.css">
+  <link rel="stylesheet" href="/static/header.css">
+  <link rel="stylesheet" href="/static/inicio.css">
+  <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,1,0&icon_names=home_and_garden" />
+</head>
+
 <body>
   <div class="snack_bar">
     <div class="icon_cap">
@@ -51,42 +54,27 @@
     <div class="predefinido">
       <img src="/static/images/logotipo.png">
     </div>
+    <div class="contatos">
+        <h1>Contatos</h1>
+        <p>Entre em contato conosco através dos canais abaixo:</p>
+        <div class="bg"></div>
+        <div class="email">
+            <a href="mailto:joaovictorqueimadas@gmail.com?subject=Reclama%C3%A7%C3%A3o%20sobre%20o%20site%20NCE!&body=Ol%C3%A1%2C%20tenho%20algumas%20reclama%C3%A7%C3%B5es%20a%20fazer%20sobre%20o%20site%20NCE!">Enviar Email <img src="/static/images/envelope.png"></a>
+        </div>
+         <div class="Whatsapp">
+            <a href="https://wa.me/5555849939602?text=Ol%C3%A1%2C%20tenho%20uma%20reclama%C3%A7%C3%A3o%20a%20fazer%20sobre%20o%20site%20NCE!">WhatsApp <img src="/static/images/whatsapp-circle.png"></a>
+        </div>
+         <div class="Instagram">
+            <a href="https://instagram.com/j.victor_o.m">Instagram <img src="/static/images/instagram-circle.png"></a>
+        </div>
+    </div>
     <div class="botao">
       <button id="navbar_open2" class="botao_open">
         <img id="seta" src="/static/images/seta.png">
       </button>
     </div>
-    {% for i in evento %}
-      <div class="noticia">
-        <div class="title">
-          <h2 class="titulo">{{ i.titulo }}</h2>
-        </div>
-        <div class="data">
-          <p>{{ i.created_at }} - {{ i.categoria }}</p>
-        </div>
-        <div class="imagem">
-          <img src="{{ i.imagem }}">
-        </div>
-        <div class="btn"></div>
-        <button class="btn-detalhes" onclick="toggleDetalhes(this)">Detalhes</button>
-
-        <div class="detalhes">
-          <div class="content">
-          <p>{{ i.conteudo }}</p>
-        </div>
-        <div class="links">
-          <a href="{{ i.link1 }}">{{ i.link1 }}</a>
-          <a href="{{ i.link2 }}">{{ i.link2 }}</a>
-          <a href="{{ i.link3 }}">{{ i.link3 }}</a>
-          <a href="{{ i.link4 }}">{{ i.link4 }}</a>
-          <a href="{{ i.link5 }}">{{ i.link5 }}</a>
-        </div>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-  </body>
-  <script>
+</body>
+<script>
   let aberto = true
   let seta = document.getElementById("seta")
   let botao2 = document.getElementById("navbar_open2")
@@ -106,17 +94,6 @@
     }
     aberto = !aberto
   })
+</script>
 
-  function toggleDetalhes(botao) {
-    const detalhes = botao.nextElementSibling;
-
-    detalhes.classList.toggle("ativo");
-    botao.classList.toggle("ativo");
-    if (detalhes.classList.contains("ativo")){
-      botao.innerText = "Ver menos";
-    } else {
-      botao.innerText = "Ver mais";
-    }
-  }
-</script> 
 </html>
