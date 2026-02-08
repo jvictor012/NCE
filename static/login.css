@@ -1,0 +1,104 @@
+/* RESET BÁSICO */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+    min-height: 100vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* CAIXA DO LOGIN (MESMO PADRÃO DAS .noticia) */
+.inputs {
+    width: 85%;
+    height: auto;
+    background-color: #175738;
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 0px 5px 0px black;
+    padding: 20px;
+}
+
+/* FORM */
+.inputs form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* CAMPOS */
+.inputs .email,
+.inputs .senha {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* LABEL */
+.inputs label {
+    color: aliceblue;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* INPUT */
+.inputs input {
+    height: 40px;
+    border-radius: 5px;
+    border: solid 1px black;
+    padding: 0 10px;
+    box-shadow: 1px 3px 0px black;
+}
+
+/* BOTÃO */
+.button {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.button button {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 0px 3px 0px black;
+    padding: 12px 20px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* LINK CADASTRO */
+.container a {
+    margin-top: 20px;
+    text-decoration: none;
+    color: #175738;
+    font-weight: bold;
+}
+
+.imagem{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+img{
+    width: 30%;
+    height: auto;
+    margin-left: 10px;
+}

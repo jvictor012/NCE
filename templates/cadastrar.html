@@ -1,23 +1,42 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="/static/padrao.css">
-    <script src="/static/scripts/cadastro.js"></script>
 
-  </head>
-  <body>
-    <form action="{{url_for('cadastrar')}}" method="post">
-      <label for="cemail">Email: </label>
-      <input id="cemail" type="email" name="cemail" required />
-      
-      <label for="csenha">Senha:</label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="/static/padrao.css">
+  <link rel="stylesheet" href="/static/login.css">
+  <script src="scripts/supabase-nce.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="imagem">
+      <img src="/static/images/logotipo.png">
+    </div>
+    
+    <div class="inputs">
+      <form action="{{url_for('cadastrar')}}" method="post">
+        <div class="email">
+          <label for="cemail">Email: </label>
+          <input id="cemail" type="email" name="cemail" required />
+        </div>
+        
+        <div class="senha">
+          <label for="csenha">Senha:</label>
       <input id="csenha" type="password" name="csenha" required />
-            
-      <button type="submit">Enviar</button>
-    </form>
+        </div>
+       
+        <div class="button">
+          <button type="submit">Cadastrar</button>
+        </div>
+        
+      </form>
+    </div>
     <a href="{{url_for('login')}}">Já tenho uma conta!</a>
-  </body>
+  </div>
+</body>
+
 </html>
