@@ -85,7 +85,9 @@ def eventos():
         })
     return render_template("eventos.html", evento = eventos)
 
+
 @app.route('/home', methods=['POST', 'GET'])
+@login_required
 def home():
     print(current_user.id)
 
@@ -120,6 +122,7 @@ def home():
         return render_template("aviso.html")
 
 @app.route('/perfil', methods=['GET', 'POST'])
+@login_required
 def perfil():
     id_user = current_user.id
     if id_user:
