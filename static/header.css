@@ -46,6 +46,7 @@ header{
     align-items: start;
     justify-content: space-between;
     border-right: solid 0.5px black;
+    margin-top: 5vh;
 }
 .navegar img{
     width: 30px;
