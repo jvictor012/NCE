@@ -35,19 +35,16 @@ body{
 }
 
 header{
-    background-color:#175738;
+    background-color:#28493900;
     font-size:10px;
     width: 30%;
-    height: 95vh;
+    height: 85vh;
     position:fixed;
     display: flex;
     flex-direction: column;
     bottom:0;
-    align-items: start;
-    justify-content: end;
-    border-right: solid 0.5px black;
-    margin-top: 5vh;
-    gap: 30%;
+    align-items: center;
+    justify-content: space-between;
 }
 .navegar img{
     width: 30px;
@@ -57,7 +54,7 @@ header{
 .profile{
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: end;
 }
 
@@ -72,7 +69,8 @@ header{
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    margin: 5px;
+    width: 90%;
+
 }
 
 a{
@@ -126,9 +124,4 @@ a{
 
 .barra_lateral{
     display:flex;
-    width: 30%;
-    height: 100%;
-    align-items: end;
-    flex-direction: column;
-    justify-content: end;
 }

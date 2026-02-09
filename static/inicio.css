@@ -8,6 +8,8 @@
     overflow-y: auto;
     justify-self: end;
     margin-top: 5vh;
+    border-left: solid 0.5px black;
+    z-index: 1000;
 }
 
 /*TITULO, PARAGRAFO E TODO O RESTO*/
