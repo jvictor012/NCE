@@ -62,7 +62,7 @@
           <h2 class="titulo">{{ n.titulo }}</h2>
         </div>
         <div class="data">
-          <p>{{ n.created_at }} - {{ n.categoria }}</p>
+          <p>{{ n.created_at[:10] }} - {{ n.categoria }}</p>
         </div>
         <div class="imagem">
           <img src="{{ n.imagem }}">
