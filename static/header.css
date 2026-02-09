@@ -44,7 +44,7 @@ header{
     flex-direction: column;
     bottom:0;
     align-items: start;
-    justify-content: start;
+    justify-content: center;
     border-right: solid 0.5px black;
 }
 .navegar img{
