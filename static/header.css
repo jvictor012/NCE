@@ -44,8 +44,10 @@ header{
     flex-direction: column;
     bottom:0;
     align-items: start;
-    justify-content: center;
+    justify-content: end;
     border-right: solid 0.5px black;
+    margin-top: 5vh;
+    gap: 30%;
 }
 .navegar img{
     width: 30px;
