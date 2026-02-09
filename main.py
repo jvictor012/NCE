@@ -38,7 +38,7 @@ def load_user(user_id):
 
 @app.route('/')
 def noticias():
-    noticias_resp = supabase.table("noticias").select("titulo, created_at, conteudo, link1, link2, link3, link4, link5, categoria").execute()
+    noticias_resp = supabase.table("noticias").select("titulo, created_at, conteudo, link1, link2, link3, link4, link5, categoria").order('created_at', desc=True).execute()
     imagens_resp = supabase.table("images_links").select("image_url").execute()
 
     noticias_data = noticias_resp.data
